@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "semiotic-quasar-215705",
+  "private_key_id": "4522e283a77fa22f98c8ab468025b8f0a0ba1e92",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDWTr2M12cxvkxp\nea1fFdD84kPoBhDKNBQ2BpJvXQGHs8wrDRpb9fhCjL7mks1Wxh5vZwAVWO2yfUcp\nJeNLrmdnUsVfNBBtOv47chyZQ0EXc2XohPOmpvqCV9AnExDbMoxi33xnRtjA7TGd\ndFevB3dXAP3sTjOmp/T0FK2MMdSlZ88c6Lb9fBLeGerDA8LKP7Z2/EQyRG7caTnn\n/HNP39Hq1K/Q4QYsglE6uzxebXrqF7C+jGQNHKywDrAoFOvzxBQqT7Ov2bdJRRXE\nUR5AoiJZPb1qisBi4jcax+FjZ+Lo1qDOPcZlHHIr8JiFgSYktzx5cJVxrC7gNMp/\ndExX9puFAgMBAAECggEADtwuN+o7xUQ9HNc2FrDMPqzF0/yPr3sFp8AJlAqZROVK\naUsi98YfgnsrRZEKXKj83/FUHSbUcfBOkzjbAPAaoBx/g8bNbiA4FBEpOythrmmZ\nuGd3qaehw+X+O1IOyimVeHRSC6tASRMUF1HuPpHATFp3llTPL2WCuRCx/qr55Bol\nKBXJRFZvhJx4ut0juZr8fxr0jb+yco9cEHESFOGkrcUUL5g43MQ6hf/Iydu2gjsa\nN5+ai3vtdC/FmJKa93Ay+IEsmmG6I82qPfonTeJZtfQ2ff6AMNptg3f3vNzdzAkW\nk4EPlRx/zMQbOQhTJDMPIDfTmFMkkif7iNlVSB8soQKBgQDtvyGegD13pk9kP+Om\nDegt62pQqx+GbyyFxEYiFOijsBA3BeVauwSvLz7MmJ9VyYxYoEpQrOouPWS5R/V2\nVBM+4VGOG+Olvvf/rbfprYhV9YuJKw0fLFfMnZl9FKBxlXt3/rdwFb3lGMUVkigR\nXcW16BHxoBALEurLIZrhuiM/SQKBgQDmwutHnW2PMoirsUUvMKZuwgUBGi4nhmRF\nb5FLlLPBQawxxjWS8E/fn67nq90IuB+Ij9/4WW3pMbeNljhij8uWZUhx9EYIhAWA\niryWAufL9YyCpzOr8/AdlI0r3udKXepwOjkKy0yfhMgtPXin6RbbUOOKx3wN3wWW\niejrcf2uXQKBgD3+RcTvyZdmfXM1maXWIIHAziMky/6hBKoIyQTgEN2F7mR6nBix\nhYIsvqJY9ctH19nQSjCJNjNCfP43PlFRkQcnd72nlg/FISPBZ6B+SHupoG3vFOfZ\nBzfqrHhKJaAYi255s9l9Qdv4PoPmbZ5BpmlNj0hDJYvNrf2z0JAlmkVJAoGBAMTS\nWA9bLUlIFt4qcxIO8sXhYpdQFzHLJNc8k7bdfHxHYXGK18MeiWH5NxuOsRZwxSSb\nYrLWxDJ0H1T6XdljQIhklufrK5iz0mWS78sba03BgDkoF6CAjbsNK2PR2YDKnd1f\nK6wTPqWIgZxko/bDjqU9VvbVsu+523BM7Id1UKRZAoGAY/Wl8f6hIWHLaj5ti9qA\nCNGxPSfxO3BloJGwBQLYI2Bqb8yCVQUEZSHX8rldBUELUUZncueWPGyCNKBRHUrh\n94tjKHbWU0Y1L8zmb8VN2/HiPP1WQPVGwDWIUiyL53/YVNdxCbg3RMIruoNKms+3\nbWCRJN2MuOrkPtbu+VM2NdA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "renga-trading@semiotic-quasar-215705.iam.gserviceaccount.com",
+  "client_id": "102049706008196313596",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/renga-trading%40semiotic-quasar-215705.iam.gserviceaccount.com"
+}

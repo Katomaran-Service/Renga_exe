@@ -1,0 +1,166 @@
+﻿<Page x:Class="rengaas.received_ord"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:rengaas"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1050"
+      MinHeight="600" MinWidth="1050"
+      Title="received_ord">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="770" Width="770*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="150" Width="150*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="50" Height="50*"></RowDefinition>
+                <RowDefinition MinHeight="530" Height="530*"></RowDefinition>
+                <RowDefinition MinHeight="20" Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#FF4A75FF" Margin="2,2,2,0"/>
+
+            <Label x:Name="label" Content="PRODUCTS" HorizontalAlignment="Left" Margin="20.367,5,0,0" Width="146.991" FontWeight="Bold" FontSize="18" Background="{x:Null}" Foreground="White"/>
+            <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+                <DataGrid x:Name="product_grid" IsReadOnly="True" AutoGenerateColumns="False" HeadersVisibility="Column" SelectedIndex="-1" Width="1500" SelectionChanged="product_grid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="S.NO" Binding="{Binding num}" Width="30*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="PRODUCT CODE" Binding="{Binding product_code}" Width="60*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn Header="IMAGE" Width="150" IsReadOnly="True">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding image_url}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="PRODUCT NAME" Binding="{Binding product_name}" Width="100*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="UOM" Binding="{Binding uom}" Width="30*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="PIECE PER BOX" Binding="{Binding box_quantity}" Width="70*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="BOX PRICE" Binding="{Binding bprice}" Width="60*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="PIECE PRICE" Binding="{Binding pprice}" Width="50*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="ACTION" Width="100*">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Button Name="EDIT" Content="EDIT" Width="90" Background="#FF1E51FB" BorderBrush="{x:Null}" Click="EDIT_Click"/>
+                                        <Button Name="DELETE" Content="DELETE" Width="90" Background="Red" BorderBrush="{x:Null}" Click="DELETE_Click"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+
+            <Rectangle Fill="#FF4A75FF" Grid.Row="2"/>
+            <TextBox x:Name="search_box" HorizontalAlignment="Left" Margin="365,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MinHeight="25" Height="Auto" Text="Search product's name" Width="225" RenderTransformOrigin="0.449,0.467" Foreground="White" FontStyle="Italic" TextChanged="search_box_TextChanged" IsKeyboardFocusedChanged="search_box_IsKeyboardFocusedChanged" KeyDown="search_box_KeyDown" FontSize="15"/>
+            <Image x:Name="image" HorizontalAlignment="Right" Height="10" Margin="0,5,112,2" Grid.Row="2" VerticalAlignment="Top" Width="11" Source="LOGO - Copy.png" />
+            <Label x:Name="label1" Content="Created  with" HorizontalAlignment="Right" MinHeight="20" Height="Auto" Margin="0,0,114,0" Grid.Row="2" VerticalAlignment="Stretch" MinWidth="74" Width="Auto" Foreground="White" FontSize="9" FontWeight="Bold"/>
+            <Label x:Name="label1_Copy" Content="White Diamond Studio" HorizontalAlignment="Right" MinHeight="20" Height="Auto" Grid.Row="2" VerticalAlignment="Stretch" MinWidth="104" Width="110" Foreground="White" FontSize="9" FontWeight="Bold" Margin="0,0,4,0"/>
+        </Grid>
+        <Grid Grid.Column="1" Background="#FF4A75FF" Margin="0,2,0,0">
+            <Rectangle MinHeight="500" Height="Auto" Fill="#FF1C1C1A"  Margin="3,10,3,25" VerticalAlignment="Stretch"/>
+            <TextBlock x:Name="head_box" Text="ADD PRODUCTS" MinHeight="35.298" Height="Auto" Margin="30,25,30,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
+            <Grid MinWidth="172" Width="Auto" Margin="0,65,0,175" VerticalAlignment="Top">
+                <TextBox x:Name="pro_name" MinHeight="30.320" Height="Auto" Margin="10,10,10,0" MaxHeight="50" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Foreground="Gray" Text="Product Name" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="pro_name_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="product name"/>
+                <TextBox x:Name="pro_code" MinHeight="30.320" Height="Auto" Margin="10,60,10,0" TextWrapping="Wrap" BorderBrush="White" Foreground="Gray" Text="Product Code" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="pro_code_IsKeyboardFocusedChanged" VerticalAlignment="Top" FontWeight="Bold" ToolTip="product code" TextChanged="pro_code_TextChanged"/>
+                <!--<ComboBox x:Name="pro_category" MinHeight="30.320" Height="30.321" Margin="10,235,10,0" VerticalAlignment="Top" Foreground="White" BorderBrush="White" SelectionChanged="pro_category_SelectionChanged"/>-->
+                <TextBox x:Name="pro_category" MinHeight="30.320" Height="30.321" Margin="10,110,10,0" VerticalAlignment="Top" Foreground="Gray" BorderBrush="White" Text="Category" IsKeyboardFocusedChanged="pro_category_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="category"/>
+                <TextBox x:Name="pro_uom" MinHeight="30.320" Height="30.321" Margin="10,160,10,0" VerticalAlignment="Top" Foreground="Gray" BorderBrush="White" Text="Uom" IsKeyboardFocusedChanged="pro_uom_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="uom"/>
+                <!-- <ComboBox x:Name="pro_vom" MinHeight="30.320" Height="Auto" Margin="10,160,10,0" VerticalAlignment="Top" Foreground="White" BorderBrush="White" SelectionChanged="pro_vom_SelectionChanged"/> -->
+
+                <!--<ComboBox x:Name="box_avail" MinHeight="30.320" Height="30.321" Margin="10,210,10,0" VerticalAlignment="Top" Foreground="White" BorderBrush="White" SelectionChanged="box_avail_SelectionChanged" />-->
+                <TextBox x:Name="box_qty" MinHeight="30.320" Height="Auto" Margin="10,210,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Foreground="Gray" Text="Piece Per Box" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="box_qty_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="piece per box" TextChanged="box_qty_TextChanged"/>
+                <TextBox x:Name="box_price" MinHeight="30.320" Height="Auto" Margin="10,260,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Foreground="Gray" Text="Box Price" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="box_price_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="box price" TextChanged="box_price_TextChanged" />
+
+                <!-- <TextBox x:Name="pro_qty" MinHeight="30.320" Height="Auto" Margin="10,360,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Foreground="Gray" Text="Piece quantity" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="pro_qty_IsKeyboardFocusedChanged" FontWeight="Bold"/>-->
+                <TextBox x:Name="pro_price" MinHeight="30.320" Height="Auto" Margin="10,310,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Foreground="Gray" Text="Piece Price" CaretBrush="#FF1E51FB" IsKeyboardFocusedChanged="pro_price_IsKeyboardFocusedChanged" FontWeight="Bold" ToolTip="piece price" TextChanged="pro_price_TextChanged"/>
+            </Grid>
+            <ProgressBar x:Name="status_progress" MinHeight="11.061" Height="Auto" Margin="10,565,10,120" Style="{DynamicResource SimpleProgressBar}" VerticalAlignment="Bottom" Foreground="Green" BorderBrush="Transparent" Background="Transparent"/>
+            <TextBlock x:Name="status_block" MinHeight="21.859" Height="Auto" Margin="10,575,10,100" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White" FontStyle="Italic"/>
+            <Button x:Name="submit_but" Content="SUBMIT" MinHeight="35.545" Height="Auto" Margin="50,460,50,90" VerticalAlignment="Top" FontSize="10" BorderBrush="{x:Null}" Background="White" Foreground="Black" Click="submit_but_Click" MouseEnter="submit_but_MouseEnter" MouseLeave="submit_but_MouseLeave"/>
+            <Button x:Name="editpro_but" Content="EDIT" MinHeight="35.545" Height="Auto" Margin="50,460,50,90" VerticalAlignment="Top" FontSize="10" BorderBrush="{x:Null}" Background="White" Foreground="Black" Click="editpro_but_Click" Visibility="Hidden" MouseEnter="editpro_but_MouseEnter" MouseLeave="editpro_but_MouseLeave"/>
+            <Button x:Name="cancel_but" Content="Button" Height="20" Margin="60,510,58,60" VerticalAlignment="Top" Template="{DynamicResource cancel_temp}" Click="cancel_but_Click" Visibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Page>

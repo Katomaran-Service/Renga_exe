@@ -1,0 +1,109 @@
+c:\users\user\documents\visual studio 2015\Projects\rengaas\rengaas\bin\Debug\rengaas.exe.config
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\rengaas.exe
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\rengaas.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\MainWindow.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\startupscreen.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\App.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas_MarkupCompile.cache
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas_MarkupCompile.lref
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\MainWindow.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\startupscreen.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.g.resources
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.Properties.Resources.resources
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.csproj.GenerateResource.Cache
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.exe
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\MaterialDesignColors.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\App.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\received_ord.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\received_ord.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\Simple Styles.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\customer.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\customer.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\report.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\report.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\user.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\user.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\MyDialog.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\MyDialog.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\received.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\received.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.Rest.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Auth.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Core.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Storage.v1.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Cloud.Storage.V1.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\System.Interactive.Async.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.Rest.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Api.Gax.Rest.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Auth.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Core.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Core.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Storage.v1.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Apis.Storage.v1.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Cloud.Storage.V1.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Google.Cloud.Storage.V1.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\System.Interactive.Async.xml
+C:\Users\user\documents\visual studio 2015\Projects\rengaas\rengaas\bin\Debug\itextsharp.dll
+C:\Users\user\documents\visual studio 2015\Projects\rengaas\rengaas\bin\Debug\itextsharp.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Spire.License.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Spire.Pdf.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Microsoft.mshtml.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Spire.License.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\bin\Debug\Spire.Pdf.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\rengaas\rengaas\obj\Debug\rengaas.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\rengaas.exe.config
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.exe
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.pdb
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\rengaas.exe
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\rengaas.pdb
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\itextsharp.dll
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\MaterialDesignColors.dll
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\System.Interactive.Async.dll
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\itextsharp.xml
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\System.Interactive.Async.xml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\Simple Styles.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\customer.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\MainWindow.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\MyDialog.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\received.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\received_ord.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\report.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\startupscreen.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\user.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\App.g.cs
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas_MarkupCompile.cache
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas_MarkupCompile.lref
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\App.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\customer.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\MainWindow.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\MyDialog.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\received.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\received_ord.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\report.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\startupscreen.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\user.baml
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.g.resources
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.Properties.Resources.resources
+C:\Users\user\Desktop\rengaas\rengaas\obj\Debug\rengaas.csproj.GenerateResource.Cache
+C:\Users\user\Desktop\rengaas\rengaas\bin\Debug\MaterialDesignColors.pdb

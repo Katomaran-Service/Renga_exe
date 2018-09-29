@@ -1,0 +1,273 @@
+﻿<Page x:Class="rengaas.received"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:rengaas"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1050"
+      MinHeight="600" MinWidth="1050"
+      Title="received">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="600" Width="600*"/>
+            <ColumnDefinition MinWidth="300" Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="50" Height="50*"/>
+                <RowDefinition MinHeight="530" Height="530*"/>
+                <RowDefinition MinHeight="20" Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#FF4A75FF" Margin="2,2,0,0">
+
+                <Label x:Name="label" Content="RECEIVED ORDERS" HorizontalAlignment="Left" Margin="20,5,0,0" Width="173" FontWeight="Bold" FontSize="18" Background="{x:Null}" Foreground="White"/>
+                <DatePicker x:Name="date_slect" HorizontalAlignment="Right" Height="33" Margin="0,8,50,0" VerticalAlignment="Top" Width="129" Foreground="White" BorderBrush="Black" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateFormat="Short" FontSize="16" SelectedDateChanged="date_slect_SelectedDateChanged" />
+            </Grid>
+            <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                <DataGrid  x:Name="purchase_grid" IsReadOnly="True" AutoGenerateColumns="False" HeadersVisibility="Column" SelectedIndex="-1" Width="1500" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="PURCHASE ORDER NO" Binding="{Binding po}" Width="25*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="DATE" Binding="{Binding date}" Width="30*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="TIME" Binding="{Binding time}" Width="30*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CUSTOMER NAME" Binding="{Binding customer_name}" Width="50*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="SALES MAN" Binding="{Binding sales_man}" Width="50*">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn Header="STATUS" Width="100">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Rectangle x:Name="status_rec" Fill="{Binding color}"  Height="30"/>
+                                        <TextBlock x:Name="status_bl" Margin="2,2,2,2" TextAlignment="Center" Foreground="White" Text="{Binding stat}" FontSize="12"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="ACTION" Width="200">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="view" Content="VIEW"  MinWidth="70" Width="Auto" Background="#FF1E51FB" BorderBrush="{x:Null}" Click="view_Click" FontSize="10"/>
+                                        <Button x:Name="print" Content="PRINT" MinWidth="70" Width="Auto" Background="Red" BorderBrush="{x:Null}" Click="print_doc_Click" FontSize="10"/>
+                                    </StackPanel>
+                                </DataTemplate>
+
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+
+            <Rectangle Grid.Row="2" Fill="#FF4A75FF" Margin="2,2,0,0"/>
+            <Image x:Name="image1" HorizontalAlignment="Right" Height="10" Margin="0,5,112,2" Grid.Row="2" VerticalAlignment="Top" Width="11" Source="LOGO - Copy.png" />
+            <Label x:Name="label1_Copy" Content="Created  with" HorizontalAlignment="Right" MinHeight="20" Height="Auto" Margin="0,0,114,0" Grid.Row="2" VerticalAlignment="Stretch" MinWidth="74" Width="Auto" Foreground="White" FontSize="9" FontWeight="Bold"/>
+            <Label x:Name="label1_Copy1" Content="White Diamond Studio" HorizontalAlignment="Right" MinHeight="20" Height="Auto" Grid.Row="2" VerticalAlignment="Stretch" MinWidth="104" Width="110" Foreground="White" FontSize="9" FontWeight="Bold" Margin="0,0,4,0"/>
+        </Grid>
+        <Grid Grid.Column="1" Background="#FF4A75FF" Margin="2,2,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="193*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="165*"/>
+                <RowDefinition Height="255*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="71*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="White" Margin="10,10,10,17" Grid.RowSpan="5" Grid.ColumnSpan="2" />
+            <Rectangle Fill="Black" VerticalAlignment="Top" Margin="19,20,19,0" MinHeight="30" Height="Auto" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <TextBlock Text="PURCHASE ORDER" VerticalAlignment="Top" Margin="60,25,60,0" Foreground="White" TextAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="2"  />
+            <Rectangle Fill="#FFDADADA"  MinHeight="147" MaxWidth="200" Height="Auto" Margin="19,5,6,10"  VerticalAlignment="Stretch"  MinWidth="114" Width="Auto" Grid.Row="1"/>
+            <TextBlock x:Name="purchase_address" TextWrapping="WrapWithOverflow"  VerticalAlignment="Stretch" Margin="19,39,6,8" Height="Auto" MinHeight="118" MaxWidth="200" MinWidth="114" Width="Auto" Grid.Row="1"/>
+            <TextBlock x:Name="label1" Text="PURCHASE ORDER FORM"  MinHeight="24" Height="Auto" Margin="19,10,6,0" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" MinWidth="114"  Width="Auto" FontSize="8" Grid.Row="1"/>
+            <Grid Grid.Column="1"   Margin="0" Grid.Row="1"  MinHeight="165" Height="Auto" Width="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="43*"/>
+                    <ColumnDefinition Width="52*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68*"/>
+                    <RowDefinition Height="97*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform" Margin="75,0,75,30" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Image x:Name="image"    VerticalAlignment="Top" Height="40" MaxHeight="50" MaxWidth="50"   Source="rengas.jpg" />
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Margin="40,45,40,0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Label x:Name="label2" Content="RENGA TRADING" HorizontalAlignment="Stretch"  MinHeight="28" Height="Auto"  VerticalAlignment="Stretch" FontWeight="Bold" Foreground="Red"  />
+                </Viewbox>
+                
+                <Rectangle Fill="#FFDADADA" HorizontalAlignment="Stretch" Height="22"  Margin="0,15,5,60" VerticalAlignment="Stretch" MinWidth="76" Width="Auto" Grid.Row="1" Grid.Column="0"/>
+                <Rectangle Fill="#FFDADADA" HorizontalAlignment="Stretch" Height="22"  Margin="0,40,5,35" VerticalAlignment="Stretch" Width="Auto" Grid.Row="1" Grid.Column="0"/>
+                <Rectangle Fill="#FFDADADA" HorizontalAlignment="Stretch" Height="22"  Margin="0,65,5,10" VerticalAlignment="Stretch" MinWidth="76" Width="Auto" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="label3" Content="PO NUMBER" HorizontalAlignment="Stretch" Height="22"  Margin="0,15,5,60" VerticalAlignment="Stretch" FontSize="10" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="label3_Copy" Content="SALES MAN" HorizontalAlignment="Stretch" Height="22"  Margin="0,40,5,35" VerticalAlignment="Stretch" FontSize="10" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="label3_Copy1" Content="DATE &amp; TIME" HorizontalAlignment="Stretch" Height="22"  Margin="0,65,5,10" VerticalAlignment="Stretch" FontSize="10" Grid.Row="1" Grid.Column="0"/>
+                <Rectangle Fill="#FFDADADA" Height="22" Margin="0,15,15,60" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="92" Width="Auto" Grid.Row="1" Grid.Column="1" />
+                <Rectangle Fill="#FFDADADA" HorizontalAlignment="Stretch" Height="22"  Margin="0,40,15,35" VerticalAlignment="Stretch" MinWidth="92" Width="Auto" Grid.Row="1" Grid.Column="1"/>
+                <Rectangle Fill="#FFDADADA" HorizontalAlignment="Stretch" Height="22" Margin="0,65,15,10" VerticalAlignment="Stretch" MinWidth="92" Width="Auto" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock x:Name="po_text" HorizontalAlignment="Stretch"  Height="22"  Margin="0,15,15,60" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" MinWidth="70" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock x:Name="sales_text" HorizontalAlignment="Stretch" Height="22"  TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="70" Width="Auto" FontSize="10" Margin="0,40,15,35" Grid.Row="1" Grid.Column="1" />
+                <TextBlock x:Name="date_text" HorizontalAlignment="Stretch" Height="22" Margin="0,65,15,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" MinWidth="70" FontSize="10"  Grid.Row="1" Grid.Column="1" />
+            
+            </Grid>
+            <DataGrid x:Name="podatagrid"   Margin="19,0,19,0" VerticalAlignment="Stretch"  AutoGenerateColumns="False" HeadersVisibility="Column" SelectedIndex="-1" IsReadOnly="True"   Grid.Row="2" Grid.ColumnSpan="2"   >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="S.No" Binding="{Binding num}" Width="5*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="PRODUCT CODE" Binding="{Binding product_code}" Width="10*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="PRODUCT NAME" Binding="{Binding product_name}" Width="10*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="PIECE QTY" Binding="{Binding pquantity}" Width="10*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="BOX QTY" Binding="{Binding poquantity}" Width="6*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="PRICE" Binding="{Binding price}" Width="6*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#FFDADADA"/>
+                                <Setter Property="FontSize" Value="7"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FontSize" Value="10"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Rectangle Fill="#FFDADADA" HorizontalAlignment="Right" Height="21" Margin="0,0,161,10" VerticalAlignment="Bottom" Width="85" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <Label x:Name="label3_Copy2" Content="TOTAL AMOUNT" HorizontalAlignment="Right" Height="21" Margin="0,0,157,10" VerticalAlignment="Bottom" Width="89" FontSize="10" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <Rectangle Fill="#FFDADADA" HorizontalAlignment="Right" Height="21" Margin="0,0,30,10" VerticalAlignment="Bottom" Width="114" Grid.Row="3" Grid.Column="1" />
+            <TextBlock x:Name="total_amt" HorizontalAlignment="Right" Height="17" Margin="0,0,30,14" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="111" Grid.Row="3" Grid.Column="1"/>
+            <Button x:Name="print_doc" Content="PRINT" HorizontalAlignment="Right" Height="34" Margin="0,0,15,30" VerticalAlignment="Bottom" Width="81" Click="print_doc_Click" Background="Red" BorderBrush="Red" Grid.Row="4" Grid.Column="1"/>
+        </Grid>
+
+
+    </Grid>
+</Page>

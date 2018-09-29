@@ -1,0 +1,365 @@
+﻿<Window x:Class="rengaas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rengaas"
+        xmlns:tools="clr-namespace:Tools"
+        mc:Ignorable="d"
+        Icon="Rengas logo.png"
+        Title="Renga" Height="700" Width="1200" MinHeight="700" MinWidth="1200" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ControlTemplate x:Key="close" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Red"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Image x:Name="image" Source="close.png"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseEnter2_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave2_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave2}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="maximize" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Image x:Name="image" Source="window-maximize.png"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseEnter2_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave2_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave2}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="minim" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Image x:Name="image" Source="window-minimize.png"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="rst" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Image x:Name="image" Source="window-restore.png"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseEnter2_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave2_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave2}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="rec_ord" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnLoaded1"/>
+                <Storyboard x:Key="OnMouseDown1"/>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid"/>
+        </ControlTemplate>
+        <ControlTemplate x:Key="product" TargetType="{x:Type Button}">
+            <Grid x:Name="grid">
+                <Image x:Name="image" Margin="17.079,7.574,16.782,31.287" Source="icons8-cardboard-box-filled-50 (1).png" RenderTransformOrigin="0.5,0.5" Visibility="Visible">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Label x:Name="label" Content="PRODUCTS" HorizontalAlignment="Stretch" Height="27.574" Margin="32.426,0,31.139,3.713" VerticalAlignment="Bottom" Foreground="White"/>
+                <Image x:Name="image_Copy" Margin="17.079,7.574,16.782,31.287" Source="icons8-cardboard-box-filled-50.png" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="hob_but" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rectangle">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+
+                    </ObjectAnimationUsingKeyFrames>
+
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rectangle">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Rectangle x:Name="rectangle" Fill="#FF1E51FB" HorizontalAlignment="Left" Margin="10,20,0,25.308" Stroke="#FF1E51FB" Width="7" Visibility="Hidden"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="close"/>
+    </Window.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="100" Height="100*"></RowDefinition>
+            <RowDefinition MinHeight="600" Height="600*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="150" Width="150*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="1050" Width="1050*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FF4A75FF" Grid.Column="1" Grid.Row="0"  />
+        <Rectangle Fill="#FF4A75FF"  Grid.Row="0"/>
+        <Button x:Name="close" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="30"  VerticalAlignment="Top" Width="30" BorderBrush="Transparent" Click="close_Click" Margin="0" Template="{DynamicResource close}">
+            <Button.Background>
+                <ImageBrush ImageSource="close.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="maximize" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="30" Margin="0,0,40,0" Width="30" BorderBrush="Transparent" VerticalAlignment="Top" Click="maximize_Click" Template="{DynamicResource maximize}" >
+            <Button.Background>
+                <ImageBrush ImageSource="window-maximize.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="minimize" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="30" Margin="0,0,80,0" VerticalAlignment="Top" Width="30" BorderBrush="Transparent" Click="minimize_Click" Template="{DynamicResource minim}">
+            <Button.Background>
+                <ImageBrush ImageSource="window-minimize.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="restore" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="30" Margin="0,0,40,0" Width="30" BorderBrush="Transparent" VerticalAlignment="Top"  Click="restore_Click" Template="{DynamicResource rst}" Visibility="Collapsed">
+            <Button.Background>
+                <ImageBrush ImageSource="window-restore.png"/>
+            </Button.Background>
+        </Button>
+        <Image x:Name="image" Source="Rengas logo.png" Margin="10,10,10,10"/>
+        <Label x:Name="label" Content="RENGA TRADING" Grid.Column="1" HorizontalAlignment="Left" Margin="5,30.541,0,5" Width="454.372" FontWeight="Bold" FontSize="40" Foreground="White">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Frame x:Name="main_frame" Content="" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="side_grid" Margin="0,2,0,0" Grid.Row="1" Background="#FF4A75FF">
+
+            <Grid Margin="15,3,15,25" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform" Grid.Row="1">
+                    <Image x:Name="pro_image" MinHeight="42" Height="auto" Margin="900" VerticalAlignment="Stretch" Source="002_white.png"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="1">
+                    <TextBlock x:Name="pro_label" MinHeight="16" Text="PRODUCT" TextAlignment="Center" Margin="50,90,50,10" Foreground="White" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" Height="auto" HorizontalAlignment="Stretch"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="1">
+                    <Image x:Name="pro_image2" MinHeight="42" Height="Auto" Margin="900" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="002_Blue.png" Visibility="Hidden"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="1">
+                    <Button x:Name="pro_but" Content="" Height="Auto" MinHeight="100" Background="Transparent" Click="button_Click" BorderBrush="Transparent" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Template="{DynamicResource hob_but}" Width="Auto" MinWidth="123" MouseEnter="pro_but_MouseEnter" MouseDown="pro_but_MouseDown" MouseLeave="pro_but_MouseLeave" ToolTip="product"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="2">
+                    <Image x:Name="cus_image" Margin="900" HorizontalAlignment="Stretch" Source="003_white.png" Height="auto" MinHeight="42" VerticalAlignment="Stretch" />
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="2">
+                    <TextBlock x:Name="cus_label" MinHeight="16" Text="CUSTOMER" TextAlignment="Center" Margin="50,90,50,10" Foreground="White" FontWeight="Bold" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="2">
+                    <Image x:Name="cus_image2" Margin="900" HorizontalAlignment="Stretch" Source="003_Blue.png" Height="auto" MinHeight="42" VerticalAlignment="Stretch" Visibility="Hidden"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="2">
+                    <Button x:Name="cust_but" Content="" Margin="0" Height="Auto" MinHeight="100" Background="Transparent" Click="cust_but_Click" BorderBrush="Transparent"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Template="{DynamicResource hob_but}" Width="Auto" MinWidth="123" MouseEnter="cust_but_MouseEnter" MouseLeave="cust_but_MouseLeave" ToolTip="customer"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="3">
+                    <Image x:Name="report_image" Margin="900" HorizontalAlignment="Stretch"  Source="004_white.png" MinHeight="42" Height="Auto" VerticalAlignment="Stretch"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="3">
+                    <TextBlock x:Name="report_label" MinHeight="16" Text="REPORT" TextAlignment="Center" Foreground="White" FontWeight="Bold" Height="Auto" VerticalAlignment="Stretch" Margin="50,90,50,10"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="3">
+                    <Image x:Name="report_image2" MinHeight="42" Height="Auto"  Margin="900" Source="004_Blue.png"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Visibility="Hidden"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="3">
+                    <Button x:Name="report_but" MinHeight="100" Content="" Background="Transparent" Click="report_but_Click" BorderBrush="Transparent" VerticalAlignment="Stretch" Margin="0" Height="Auto" Template="{DynamicResource hob_but}" Width="Auto" MinWidth="123" MouseEnter="report_but_MouseEnter" MouseLeave="report_but_MouseLeave" ToolTip="report"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="0">
+                    <Image x:Name="rec_image" MinHeight="42" Height="Auto" Margin="900" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="001_white.png"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="0">
+                    <TextBlock x:Name="rec_label" Text="RECEIVED ORDERS" TextAlignment="Center" Margin="30,90,30,10" Foreground="White" FontWeight="Bold" MinHeight="16" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="0">
+                    <Image x:Name="rec_image2" MinHeight="42" Height="Auto" Margin="900" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="001_Blue.png" Visibility="Hidden"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="0">
+                    <Button x:Name="received_but" MinHeight="90" Content="" Background="Transparent" Click="received_but_Click" BorderBrush="Transparent" VerticalAlignment="Stretch" Margin="0" Height="Auto" HorizontalAlignment="Stretch" Template="{DynamicResource hob_but}" MinWidth="123" Width="Auto" MouseEnter="received_but_MouseEnter" MouseLeave="received_but_MouseLeave" ToolTip="received order"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="4">
+                    <Image x:Name="user_image" Height="Auto" Margin="35" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="icons8-account-filled-50 (3).png"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="4">
+                    <Image x:Name="user_image2" Height="Auto" Margin="35" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="icons8-account-filled-50 (2).png" Visibility="Hidden"/>
+                </Viewbox>
+
+                <Viewbox Stretch="Uniform" Grid.Row="4">
+
+                    <TextBlock x:Name="user_label" MinHeight="16" Width="Auto"  Text="USER" TextAlignment="Center" Foreground="White" FontWeight="Bold" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="60,90,60,10"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Grid.Row="4">
+                    <Button x:Name="user_but" MinHeight="100" Margin="0" Content="" Background="Transparent" Click="user_but_Click" BorderBrush="Transparent" VerticalAlignment="Stretch"  Height="Auto" HorizontalAlignment="Stretch" Template="{DynamicResource hob_but}" Width="123" MouseEnter="user_but_MouseEnter" MouseLeave="user_but_MouseLeave" ToolTip="user"/>
+                </Viewbox>
+
+            </Grid>
+        </Grid>
+
+        <Button x:Name="setting_but" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="43.395" Margin="0,0,10,0" VerticalAlignment="Bottom" Width="37.934" BorderBrush="Transparent" Click="setting_but_Click" ToolTip="setting">
+            <Button.Background>
+                <ImageBrush ImageSource="dots-vertical.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="notification_but" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="38.395" Margin="0,0,75,0" VerticalAlignment="Bottom" Width="39.661" BorderBrush="Transparent" Click="notification_but_Click" MouseEnter="notification_but_MouseEnter" MouseLeave="notification_but_MouseLeave" ToolTip="order notification">
+            <Button.Background>
+                <ImageBrush ImageSource="bell-ring.png"/>
+            </Button.Background>
+        </Button>
+        <Ellipse Grid.Column="1" Fill="Red" HorizontalAlignment="Right" Margin="0,0,67,23.333" Width="29" Height="25.062" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="noty_count" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,0,71.485,28.998" TextWrapping="Wrap" Text="0" Width="19.132" FontSize="10" FontWeight="Bold" Height="14.397" VerticalAlignment="Bottom" Foreground="White"/>
+        <Grid x:Name="noti_grid" HorizontalAlignment="Right" Grid.Column="1" Height="200" Margin="520,2,75,0" Grid.Row="1" VerticalAlignment="Top" Visibility="Collapsed" >
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="200" Width="455" AutoGenerateColumns="False" SelectedIndex="-1" Background="#FF555555" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" ToolTip="notification">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="10*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontSize" Value="10"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Message" Width="30*">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="txt"  TextAlignment="Left" Foreground="White" TextWrapping="Wrap" Text="{Binding message}" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid x:Name="setting_grid" Grid.Column="1" HorizontalAlignment="Right" Height="170" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="219" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="107*"/>
+                <ColumnDefinition Width="112*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,0,0" Width="219.175" Background="#FFCDCDEE" Grid.ColumnSpan="2">
+                <Grid Height="70" Background="#FF555555">
+                    <Image x:Name="image2" Margin="26,0,0,0" HorizontalAlignment="Left" Width="62" Source="account-circle.png"/>
+                    <TextBlock x:Name="user_name" Margin="93,20,0,10" TextWrapping="Wrap" Text="USER" TextAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="White" />
+                </Grid>
+                <Button x:Name="info_but" Content="INFO" Height="50" Click="info_but_Click" Background="#FF4A75FF" BorderBrush="Black"/>
+                <Button x:Name="sign_out" Content="SIGN OUT" Height="50" Click="sign_out_Click" Background="#FF4A75FF" BorderBrush="Black"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,69 @@
+﻿<Window x:Class="rengaas.startupscreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rengaas"
+        mc:Ignorable="d" 
+        AllowsTransparency="True"
+        Title="startupscreen" Height="669.376" Width="429.727" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="{x:Null}" Icon="Rengas logo.png"  >
+    <Window.Resources>
+
+        <ControlTemplate x:Key="close" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Red"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave2">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Transparent">
+                <Image x:Name="image" Source="close (1).png"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseEnter2_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter2}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave2_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave2}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+    </Window.Resources>
+    <Grid x:Name="startgrid" Margin="0,0,10,0" >
+        <Grid.Resources>
+            <Storyboard x:Key="FadeStoryboard">
+                <DoubleAnimation From="2" To="0.1" Storyboard.TargetProperty="Opacity" 
+                                 Storyboard.TargetName="startgrid" 
+                                  AutoReverse="True">
+                    <DoubleAnimation.EasingFunction>
+                        <CubicEase/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image x:Name="image" Margin="0,0,0.426,-0.424" Source="First screen_exe.png">
+            <Image.Effect>
+                <DropShadowEffect Direction="100"/>
+            </Image.Effect>
+        </Image>
+        <Button x:Name="close" Content="Button" HorizontalAlignment="Left" Height="31.262" Margin="366.989,107.42,0,0" VerticalAlignment="Top" Width="35.523" Template="{DynamicResource close}" Click="close_Click"/>
+        <TextBox x:Name="username_box" Margin="109,288,131,346" TextWrapping="Wrap" TextAlignment="Center" Text="User name" Foreground="Black" BorderBrush="Black" IsKeyboardFocusedChanged="username_box_IsKeyboardFocusedChanged" FontSize="15" FontWeight="Bold"/>
+        <TextBlock x:Name="passlabel" Text="Password" TextAlignment="Center" Height="19" Margin="109,0,131,300" VerticalAlignment="Bottom" Foreground="Black" FontSize="15" FontWeight="Bold"/>
+        <PasswordBox x:Name="passbox" Height="36" Margin="109,0,131,288" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Foreground="Black" BorderBrush="Black" IsKeyboardFocusedChanged="passbox_IsKeyboardFocusedChanged" KeyDown="passbox_KeyDown"/>
+        <Button x:Name="login_but" Content="LOG IN" Height="36" Margin="149,0,161,200" VerticalAlignment="Bottom" Background="#FF4065DD" BorderBrush="#FF4065DD" Foreground="White" Click="login_but_Click"/>
+        <TextBlock x:Name="login_status" Height="30" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="109,0,131,170" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock" TextAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="80,215,0,0" TextWrapping="Wrap" Text="WELCOME TO DASHBOARD" VerticalAlignment="Top" Width="262" FontSize="20" FontWeight="Bold" Background="White"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="955,237,-542,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

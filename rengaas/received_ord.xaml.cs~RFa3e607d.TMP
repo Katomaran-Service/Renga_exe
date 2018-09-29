@@ -1,0 +1,818 @@
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Net.Http;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
+using System.Drawing;
+
+namespace rengaas
+{
+    /// <summary>
+    /// Interaction logic for received_ord.xaml
+    /// </summary>
+    public partial class received_ord : Page
+    {
+        public int position,status,pn,pc,pcat,pq,pbq,pv,pp,pi;
+        public string[] fileNames=new string[2];
+        public string imurl="",aurl="",omurl;
+        public int i = 1;
+        public string opcode="";
+        private static readonly HttpClient client = new HttpClient();
+        public class Item
+        {
+            public string num { get; set; }
+            public dynamic oimage_url { get; set; }
+            public dynamic url { get; set; }
+            public dynamic image_url { get; set; }
+            public string product_code { get; set; }
+            public string product_name { get; set; }
+            public string category { get; set; }
+            public string product_quantity { get; set; }
+            public string pprice { get; set; }
+            public string box_available { get; set; }
+            public string box_quantity { get; set; }
+            public string bprice { get; set; }
+            public string uom { get; set; }
+        }
+        public class citem
+        {
+            public string num { get; set; }
+            public string image_url { get; set; }
+            public string product_code { get; set; }
+            public string product_name { get; set; }
+            public string category { get; set; }
+            public string box_quantity { get; set; }
+            public string box_available { get; set; }
+            public string product_quantity { get; set; }
+            public string uom { get; set; }
+            public string pprice { get; set; }
+            public string bprice { get; set; }
+        }
+        public List<Item> _items = new List<Item>();
+        public List<citem> _items1 = new List<citem>();
+
+       public List<Item> Items
+        {
+            get { return _items; }
+            set { _items = value; }
+        }
+        public List<citem> citems
+        {
+            get { return _items1; }
+            set { _items1 = value; }
+        }
+        public received_ord()
+        {
+            InitializeComponent();
+            product_get();
+            status_progress.Visibility = Visibility.Hidden;
+            status_block.Visibility = Visibility.Hidden;
+            pro_category.Items.Add("Category");
+            pro_category.Items.Add("BEV");
+            pro_category.Items.Add("BK");
+            pro_vom.Items.Add("Vom");
+            pro_vom.Items.Add("ML");
+            pro_vom.Items.Add("KG");
+            box_avail.Items.Add("Porge available");
+            box_avail.Items.Add("True");
+            box_avail.Items.Add("False");
+            pro_category.SelectedItem = pro_category.Items[0];
+            pro_vom.SelectedItem = pro_vom.Items[0];
+            box_avail.SelectedItem = box_avail.Items[0];
+            status_block.Text = "0% done";
+
+
+        }
+
+        private void pro_name_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (pro_name.Text == "Product name")
+            {
+                pro_name.Text = "";
+                pro_name.Foreground = new SolidColorBrush(Colors.White);
+                if (pn == 15)
+                    status -= pn;
+                pn = 0;
+
+            }
+            else if (pro_name.Text == "")
+            {
+                pro_name.Text = "Product name";
+                pro_name.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pn == 15)
+                    status -= pn;
+                pn = 0;
+            }
+            else
+            {
+                if (pn == 0)
+                {
+                    pn = 15;
+                    status += pn;
+                }
+            }
+            status_update();
+
+        }
+
+        private void pro_code_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (pro_code.Text == "Product code")
+            {
+                pro_code.Text = "";
+                pro_code.Foreground = new SolidColorBrush(Colors.White);
+                if (pc == 15)
+                    status -= pc;
+                pc = 0;
+            }
+            else if (pro_code.Text == "")
+            {
+                pro_code.Text = "Product code";
+                pro_code.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pc == 15)
+                    status -= pc;
+                pc = 0;
+            }
+            else
+            {
+                if (pc == 0)
+                {
+                    pc = 15;
+                    status += pc;
+                }
+            }
+            status_update();
+
+        }
+
+
+        private void upload_image_but_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "JPG|*.jpg|JPEG|*.jpeg|PNG|*.png|AVI|*.avi"; //use as you require.
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                fileNames = openFileDialog1.FileNames;
+                
+                System.Drawing.Image img = System.Drawing.Image.FromFile(fileNames[0]);
+                System.Drawing.Size s = new System.Drawing.Size(100, 100);
+                System.Drawing.Image im = image_compress(img,s);
+                //MessageBox.Show(im.Width.ToString()+ im.Height.ToString());
+                if((img.Width<=100&& img.Height<=100))
+                {
+
+                    ImageBrush myBrush = new ImageBrush();
+                    myBrush.ImageSource = new BitmapImage(new Uri(fileNames[0]));
+
+                    image_ellipse.Fill = myBrush;
+                    if (pi == 0)
+                    {
+                        pi = 15;
+                        status += pi;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Image should be of size: 100px*100px");
+                    if (pi == 15)
+                        status -= pi;
+                    pi = 0;
+                }
+                status_update();
+            }
+        }
+
+        private void pro_category_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (pro_category.Text != "Category")
+            {
+                if (pcat == 0)
+                {
+                    pcat = 15;
+                    status += pcat;
+                }
+            }
+            else
+            {
+                if (pcat == 15)
+                    status -= pcat;
+                pcat = 0;
+            }
+            status_update();
+        }
+
+
+        private void pro_vom_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (pro_vom.Text != "Vom")
+            {
+                if (pv == 0)
+                {
+                    pv = 15;
+                    status += pv;
+                }
+            }
+            else
+            {
+                if (pv == 15)
+                    status -= pv;
+                pv = 0;
+            }
+            status_update();
+        }
+
+
+
+
+        private void EDIT_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(sender.ToString()+product_grid.SelectedIndex.ToString());
+            position = product_grid.SelectedIndex;
+            head_box.Text = "EDIT PRODUCT";
+            submit_but.Visibility = Visibility.Hidden;
+            editpro_but.Visibility = Visibility.Visible;
+            cancel_but.Visibility = Visibility.Visible;
+            
+            dynamic list = product_grid.SelectedItems[0];
+            omurl = list.oimage_url;
+            imurl = list.image_url;
+            aurl = list.url;
+            ImageBrush myBrush = new ImageBrush();
+            if (list.image_url != "")
+            {
+                myBrush.ImageSource =
+                new BitmapImage(new Uri(list.image_url));
+                fileNames[0] = "";
+                image_ellipse.Fill = myBrush;
+                
+            }
+            
+            pro_name.Text = list.product_name;
+            pro_name.Foreground = new SolidColorBrush(Colors.White);
+            pro_code.Text = list.product_code;
+            pro_code.Foreground = new SolidColorBrush(Colors.White);
+            opcode = list.product_code;
+            pro_qty.Text = list.product_quantity;
+            pro_qty.Foreground = new SolidColorBrush(Colors.White);
+            box_qty.Text = list.box_quantity;
+
+            box_qty.Foreground = new SolidColorBrush(Colors.White);
+            box_avail.SelectedItem = list.box_available;
+            box_price.Text = list.bprice;
+            box_price.Foreground = new SolidColorBrush(Colors.White);
+            pro_category.SelectedItem = list.category;
+            pro_vom.SelectedItem = list.uom;
+            pro_price.Text = list.pprice;
+
+            pro_price.Foreground = new SolidColorBrush(Colors.White);
+            
+
+        }
+
+        private void DELETE_Click(object sender, RoutedEventArgs e)
+        {
+            bool success = connect.CheckForInternetConnection();
+            if (success)
+            {
+                try
+                {
+                    dynamic list = product_grid.SelectedItems[0];
+                    string ms = "Do you want to delete \n product: " + list.product_name;
+                    var dialog = new MyDialog("DELETE PRODUCT", ms);
+                    dialog.Show();
+                    dialog.Closing += async (sender1, e1) =>
+                    {
+
+                        var d = sender1 as MyDialog;
+                        if (!d.Canceled)
+                        {
+
+                            var values = new Dictionary<string, string>
+                     {
+                        { "product_code", list.product_code }
+                    };
+
+                            var content = new FormUrlEncodedContent(values);
+                            var response = await client.PostAsync(connect.product_delete_url, content);
+
+                            var responseString = await response.Content.ReadAsStringAsync();
+                            var p = AppDomain.CurrentDomain.BaseDirectory;
+                            string replaced = list.image_url.Replace(p, "");
+                            string r2 = replaced.Replace(@"image_folder\", "");
+                            //connect.DeleteObject("renga_trading",r2);
+                            MessageBox.Show("Product deleted");
+                            product_grid.ItemsSource = null;
+                            product_get();
+                            clear();
+
+                        }
+
+                    };
+                }
+                catch(Exception m)
+                {
+                    MessageBox.Show(m.Message);
+                }
+                
+            }
+            
+
+        }
+        private void pro_qty_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (pro_qty.Text == "Piece quantity")
+            {
+                pro_qty.Text = "";
+                pro_qty.Foreground = new SolidColorBrush(Colors.White);
+                if (pq == 15)
+                    status -= pq;
+                pq = 0;
+
+            }
+            else if (pro_qty.Text == "")
+            {
+                pro_qty.Text = "Piece quantity";
+                pro_qty.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pq == 15)
+                    status -= pq;
+                pq = 0;
+            }
+            else
+            {
+                if (pq == 0)
+                {
+                    pq = 15;
+                    status += pq;
+                }
+            }
+        }
+
+        private void pro_price_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (pro_price.Text == "Piece price")
+            {
+                pro_price.Text = "";
+                pro_price.Foreground = new SolidColorBrush(Colors.White);
+                if (pp == 15)
+                    status -= pp;
+                pp = 0;
+
+            }
+            else if (pro_price.Text == "")
+            {
+                pro_price.Text = "Piece price";
+                pro_price.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pp == 15)
+                    status -= pp;
+                pp = 0;
+            }
+            else
+            {
+                if (pp == 0)
+                {
+                    pp = 15;
+                    status += pp;
+                }
+            }
+        }
+
+        private void editpro_but_Click(object sender, RoutedEventArgs e)
+        {
+            string file2 = "";
+            bool success = connect.CheckForInternetConnection();
+            if (success)
+            {
+                if ((pro_code.Text == "Product code") || (pro_name.Text == "Product name") || (pro_category.Text == "Category") || (pro_qty.Text == "Piece quantity") || (pro_vom.Text == "Vom") || (pro_price.Text == "Piece price") || (box_avail.Text=="Porge available"))
+                {
+                    MessageBox.Show("EMPTY FIELDS");
+                }
+                else
+                {
+                    bool val = false;
+                    if (box_avail.Text=="True")
+                        val = true;
+                    if (box_price.Text == "Porge price")
+                        box_price.Text = "0";
+                    if (box_qty.Text == "Piece per porge")
+                        box_qty.Text = "0";
+                    if (head_box.Text == "EDIT PRODUCT")
+                    {
+                        string ms = "Do you want to edit \n product code: " + opcode;
+                        var dialog = new MyDialog("EDIT PRODUCT", ms);
+                        dialog.Show();
+                        dialog.Closing += async (sender1, e1) =>
+                        {
+                            var d = sender1 as MyDialog;
+                            //MessageBox.Show(fileNames[0]);
+                            string file = imurl;
+                            if (fileNames[0] != "")
+                            {
+
+                                var p = AppDomain.CurrentDomain.BaseDirectory;
+                                string replaced = imurl.Replace(p, "");
+                                string r2 = replaced.Replace(@"image_folder\", "");
+
+                                connect.DeleteObject("renga_trading", r2);
+                               file = connect.UploadFile("renga_trading", fileNames[0]);
+                               file2 = connect.GenerateSignedUrl("renga_trading", file);
+
+                            }
+                            else
+                            {
+                                file = omurl;
+                                file2 = aurl;
+                            }
+                            if (!d.Canceled)
+                            {
+                                var values = new Dictionary<string, string>
+                     {
+                        { "product_name", pro_name.Text },
+                        { "product_code", opcode },
+                        { "change_product_code", pro_code.Text },
+                        { "category", pro_category.Text },
+                        { "piece_quantity", pro_qty.Text },
+                        {"porge_avaiable",val.ToString() },
+                        {"porge_price",box_price.Text },
+                        {"piece_per_porge",box_qty.Text },
+                        {"piece_price",pro_price.Text },
+                        { "uom", pro_vom.Text },
+                        { "image_url", file },
+                                    { "url", file2 }
+                    };
+
+                                var content = new FormUrlEncodedContent(values);
+                                var response = await client.PostAsync(connect.product_edit_url, content);
+                                var responseString = await response.Content.ReadAsStringAsync();
+                                MessageBox.Show("PRODUCT EDITED");
+                                product_grid.ItemsSource = null;
+                                product_get();
+                                clear();
+                            }
+
+                        };
+
+                    }
+                }
+                
+            }
+            
+        }
+        public void edit_msg()
+        {
+
+        }
+
+        private void box_price_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (box_price.Text == "Porge price")
+            {
+                box_price.Text = "";
+                box_price.Foreground = new SolidColorBrush(Colors.White);
+                if (pq == 15)
+                    status -= pq;
+                pq = 0;
+
+            }
+            else if (box_price.Text == "")
+            {
+                box_price.Text = "Porge price";
+                box_price.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pq == 15)
+                    status -= pq;
+                pq = 0;
+            }
+            else
+            {
+                if (pq == 0)
+                {
+                    pq = 15;
+                    status += pq;
+                }
+            }
+        }
+
+        private void submit_but_Click(object sender, RoutedEventArgs e)
+        {
+            if (connect.CheckForInternetConnection())
+            {
+                if ((pro_code.Text == "Product code") || (pro_name.Text == "Product name") || (pro_category.Text == "Category") || (pro_qty.Text == "Quantity") || (pro_qty.Text == "Piece quantity") || (pro_vom.Text == "Vom") || (pro_price.Text == "Piece price") || (box_avail.Text == "Porge available")||(fileNames[0]=="") )
+                {
+                    
+                    MessageBox.Show("EMPTY FIELDS");
+                }
+                else
+                {
+                    bool val = false;
+                    bool success = connect.CheckForInternetConnection();
+                    if (box_avail.SelectedItem == box_avail.Items[1])
+                        val=true;
+                    if (box_price.Text == "Porge price")
+                        box_price.Text = "0";
+                    if (box_qty.Text == "Piece per porge")
+                        box_qty.Text = "0";
+                    if (success)
+                    {
+                        if (head_box.Text == "ADD PRODUCT")
+                        {
+                            string ms = "Do you want to add \n product name: " + pro_name.Text;
+                            var dialog = new MyDialog("ADD PRODUCT", ms);
+                            dialog.Show();
+                            dialog.Closing += async (sender1, e1) =>
+                            {
+                                string file = connect.UploadFile("renga_trading", fileNames[0]);
+                                string file2 = connect.GenerateSignedUrl("renga_trading", file);
+                                Console.WriteLine(file2);
+                                var d = sender1 as MyDialog;
+                                if (!d.Canceled)
+                                {
+                                    var values = new Dictionary<string, string>
+                     {
+                        { "product_name", pro_name.Text },
+                        { "product_code", pro_code.Text },
+                        { "category", pro_category.Text },
+                        { "piece_quantity", pro_qty.Text },
+                        {"porge_avaiable",val.ToString() },
+                        {"porge_price",box_price.Text },
+                        {"piece_per_porge",box_qty.Text },
+                        {"piece_price",pro_price.Text },
+                        { "uom", pro_vom.Text },
+                        { "price", pro_price.Text },
+                                    { "url",file2 },
+                        { "image_url",file  }
+                    };
+
+                                    var content = new FormUrlEncodedContent(values);
+                                    var response = await client.PostAsync(connect.product_add_url, content);
+
+                                    var responseString = await response.Content.ReadAsStringAsync();
+                                    MessageBox.Show("PRODUCT ADDED");
+                                    product_grid.ItemsSource = null;
+                                    product_get();
+                                    clear();
+                                }
+
+                            };
+
+                        }
+                    }
+
+                }
+            }
+            
+        }
+
+        private void box_avail_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (box_avail.Items != null)
+            {
+                
+                if (box_avail.SelectedItem == box_avail.Items[1])
+                {
+                    
+                    box_qty.IsEnabled = true;
+                    box_price.IsEnabled = true;
+
+                }
+                else
+                {
+                    box_qty.Text = "Piece per porge";
+                    box_price.Text = "Porge price";
+                    box_qty.IsEnabled = false;
+                    box_price.IsEnabled = false;
+                }
+            }
+        }
+
+        private void search_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Items.Count != 0)
+            {
+                citems.Clear();
+                product_get();
+                int i = 1;
+                if (Items != null)
+                {
+                    foreach (var items in Items)
+                    {
+                        if (search_box.Text == "" || search_box.Text == "Search product's name")
+                        {
+                            i = 1;
+                            product_grid.ItemsSource = Items;
+                        }
+                        else
+                        {
+                            if (items.product_name.StartsWith(search_box.Text, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                _items1.Add(new citem {num=i.ToString(), image_url = items.image_url, product_code = items.product_code, product_name = items.product_name, category = items.category, product_quantity = items.product_quantity, box_quantity = items.box_quantity, uom = items.uom });
+                                i++;
+                                product_grid.ItemsSource = citems;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void search_box_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (search_box.Text == "Search product's name")
+            {
+                search_box.Text = "";
+                search_box.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            else if (search_box.Text == "")
+            {
+                search_box.Text = "Search product's name";
+                search_box.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        private void search_box_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+
+            }
+        }
+
+        private void cancel_but_Click(object sender, RoutedEventArgs e)
+        {
+            clear();
+        }
+        public void clear()
+        {
+            head_box.Text = "ADD PRODUCT";
+            submit_but.Visibility = Visibility.Visible;
+            editpro_but.Visibility = Visibility.Hidden;
+            cancel_but.Visibility = Visibility.Hidden;
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("no_image.png", UriKind.Relative));
+            fileNames[0] = "";
+            image_ellipse.Fill = myBrush;
+            pro_name.Text = "Product name";
+            pro_name.Foreground = new SolidColorBrush(Colors.Gray);
+            pro_code.Text = "Product code";
+            pro_code.Foreground = new SolidColorBrush(Colors.Gray);
+            pro_category.SelectedItem = pro_category.Items[0];
+            pro_vom.SelectedItem = pro_vom.Items[0];
+            pro_qty.Text = "Piece quantity";
+            pro_qty.Foreground = new SolidColorBrush(Colors.Gray);
+            box_avail.SelectedItem = box_avail.Items[0];
+            box_price.Text = "Porge price";
+            box_qty.Foreground = new SolidColorBrush(Colors.Gray);
+            box_qty.Text = "Piece per porge";
+            box_qty.Foreground = new SolidColorBrush(Colors.Gray);
+            pro_price.Text = "Piece price";
+            pro_price.Foreground = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void box_qty_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (box_qty.Text == "Piece per porge")
+            {
+                box_qty.Text = "";
+                box_qty.Foreground = new SolidColorBrush(Colors.White);
+                if (pbq == 15)
+                    status -= pbq;
+                pbq = 0;
+
+            }
+            else if (box_qty.Text == "")
+            {
+                box_qty.Text = "Piece per porge";
+                box_qty.Foreground = new SolidColorBrush(Colors.Gray);
+                if (pbq == 15)
+                    status -= pbq;
+                pbq = 0;
+            }
+            else
+            {
+                if (pbq == 0)
+                {
+                    pbq = 15;
+                    status += pbq;
+                }
+            }
+        }
+        
+        public void product_get()
+        {
+            
+            bool success = connect.CheckForInternetConnection();
+            if (success)
+            {
+                String url = connect.product_get_url;
+                try
+                {
+                    HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
+                    string result = null;
+                    var dialog = new MyDialog("RESPONSE", "loading data....\nPlease wait");
+
+                    dialog.Show();
+                    dialog.Closing += (sender1, e1) =>
+                    {
+                        var d = sender1 as MyDialog;
+                        if (!d.Canceled)
+                        {
+
+                        }
+
+                    };
+                    using (HttpWebResponse resp = req.GetResponse() as HttpWebResponse)
+                    {
+                        if (dialog != null)
+                        {
+                            dialog.Close();
+                        }
+                        StreamReader reader = new StreamReader(resp.GetResponseStream());
+                        result = reader.ReadToEnd();
+                    }
+                    
+                    if (connect.IsValidJson(result))
+                    {
+                        var obj = JObject.Parse(result);
+                        if (Convert.ToBoolean(obj["status"].ToString()) == true)
+                        {
+
+                            var dt = (DataTable)JsonConvert.DeserializeObject(obj["data"].ToString(), (typeof(DataTable)));
+                            //Items = (List<Item>)JsonConvert.DeserializeObject(result, typeof(List<Item>));
+                            Items.Clear();
+                            int i = 1;
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                string path1 = "";
+                                if (dr["product_code"].ToString() != "")
+                                {
+                                    if (dr["image_url"].ToString() != "" && dr["image_url"].ToString() != null)
+                                    {
+                                        var path = System.IO.Path.Combine(@"image_folder", dr["image_url"].ToString());
+                                        if (!File.Exists(path))
+                                        {
+                                            connect.DownloadObject("renga_trading", dr["image_url"].ToString(), path);
+                                        }
+                                        var p = AppDomain.CurrentDomain.BaseDirectory;
+
+                                        path1 = System.IO.Path.Combine(p, path);
+                                    }
+
+
+                                    _items.Add(new Item { num = i.ToString(), url = dr["url"].ToString(), image_url = path1, oimage_url = dr["image_url"].ToString(), product_code = dr["product_code"].ToString(), product_name = dr["product_name"].ToString(), category = dr["category"].ToString(), box_available = dr["porge_avaiable"].ToString(), box_quantity = dr["piece_per_porge"].ToString(), bprice = dr["porge_price"].ToString(), product_quantity = dr["piece_quantity"].ToString(), pprice = dr["piece_price"].ToString(), uom = dr["uom"].ToString() });
+                                    i++;
+                                }
+                                
+                                //MessageBox.Show(dr["product_code"].ToString());
+                            }
+                        }
+                       
+                        product_grid.ItemsSource = Items;
+                    }
+                    
+                    
+                   
+
+                }
+                catch (Exception e)
+                {
+                    
+                    MessageBox.Show(e.Message);
+                }
+                
+            }
+            
+        }
+        public void status_update()
+        {
+            status_block.Text = status.ToString() + "% done";
+            status_progress.Value = status;
+        }
+        private static System.Drawing.Image image_compress(System.Drawing.Image org_img, System.Drawing.Size newsize)
+        {
+            System.Drawing.Image newimage = new Bitmap(newsize.Width, newsize.Height);
+            using(Graphics gfx = Graphics.FromImage((Bitmap)newimage))
+            {
+                gfx.DrawImage(org_img, new System.Drawing.Rectangle(System.Drawing.Point.Empty, newsize));
+            }
+            return newimage;
+        }
+        
+    }
+}
