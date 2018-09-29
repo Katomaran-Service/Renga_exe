@@ -61,7 +61,7 @@ namespace rengaas
             {
 
 
-                ipconnectString = "http://192.168.43.84:3000/";
+                ipconnectString = "http://api.rangas.katomaran.com/";
                 login_url = ipconnectString + "login";
                 product_url = ipconnectString + "api/v1/products";
                 customer_url = ipconnectString + "api/v1/customers";
@@ -73,9 +73,6 @@ namespace rengaas
                 order_get_url = ipconnectString + "api/v1/orders";
                 shop_get_url = ipconnectString + "shop_details";
                 admin_view_url = ipconnectString + "view";
-                //ipconnectString = "http://192.168.0.105:3000/";
-
-                //MessageBox.Show(ipconnectString);
             }
             catch (Exception e)
             {

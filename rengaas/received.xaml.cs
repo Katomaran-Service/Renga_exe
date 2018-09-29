@@ -276,7 +276,7 @@ namespace rengaas
                             
                          
                         }
-                        Items1.Sort((x, y) => x.po.CompareTo(y.po));
+                        Items1.Sort((y, x) => x.time.CompareTo(y.time));
                         purchase_grid.ItemsSource = Items1;
                         Mouse.OverrideCursor = Cursors.Arrow;
                     }

@@ -340,7 +340,7 @@ namespace rengaas
                 submit_but.IsEnabled = false;
                 try
                 {
-                    if ((cus_name.Text == "Customer name")  || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true || connect.isvalidph(cus_tphone.Text) != true)
+                    if ((cus_name.Text == "Customer name")  || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true )
                     {
                         MessageBox.Show("EMPTY FIELDS");
                     }
@@ -426,7 +426,7 @@ namespace rengaas
                 editpro_but.IsEnabled = false;
                 try
                 {
-                    if ((cus_name.Text == "Customer name") || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true || connect.isvalidph(cus_tphone.Text) != true)
+                    if ((cus_name.Text == "Customer name") || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true )
                     {
                         MessageBox.Show("EMPTY FIELDS");
                     }

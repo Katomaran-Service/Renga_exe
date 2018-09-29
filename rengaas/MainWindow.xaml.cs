@@ -39,7 +39,7 @@ namespace rengaas
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             //this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             // Automatically resize height and width relative to content
-            //notify();
+            notify();
             t.Tick += new EventHandler(t_Tick);
             t.Interval = new TimeSpan(0, 0, 5);
             t.Start();
@@ -50,7 +50,7 @@ namespace rengaas
 
         private void t_Tick(object sender, EventArgs e)
         {
-           // notify();
+            notify();
         }
         void notify()
         {

@@ -213,7 +213,7 @@ namespace rengaas
                 submit_but.IsEnabled = false;
                 if (head_box.Text == "ADD APP USER")
                 {
-                    if (aname_text.Text == "Name" || aphone_text.Text == "Phone number" || aemail_text.Text == "E-mail id" || adest_text.Text=="Destination" || new_pass_box.Password=="" || retype_pass_box.Password=="" || retype_pass_st.Text!="password matched" || connect.valid_email(aemail_text.Text) != true || connect.isvalidph(aphone_text.Text) != true)
+                    if (aname_text.Text == "Name" || aphone_text.Text == "Phone number" || aemail_text.Text == "E-mail id" || adest_text.Text=="Destination" || new_pass_box.Password=="" || retype_pass_box.Password=="" || retype_pass_st.Text!="password matched" || connect.valid_email(aemail_text.Text) != true )
                     {
                         MessageBox.Show("Invalid fields");
                     }
@@ -275,7 +275,7 @@ namespace rengaas
                 }
                 else if(head_box.Text=="ADD DASHBOARD USER")
                 {
-                    if (aname_text.Text == "Name" || aphone_text.Text == "Phone number" || aemail_text.Text == "E-mail id" || auser_name.Text=="User name" || adesign_text.Text == "Designation" || new_pass_box.Password == "" || retype_pass_box.Password == "" || retype_pass_st.Text != "password matched" || connect.valid_email(aemail_text.Text) != true || connect.isvalidph(aphone_text.Text) != true)
+                    if (aname_text.Text == "Name" || aphone_text.Text == "Phone number" || aemail_text.Text == "E-mail id" || auser_name.Text=="User name" || adesign_text.Text == "Designation" || new_pass_box.Password == "" || retype_pass_box.Password == "" || retype_pass_st.Text != "password matched" || connect.valid_email(aemail_text.Text) != true )
                     {
                         MessageBox.Show("Invalid fields");
                     }
