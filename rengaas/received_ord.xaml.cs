@@ -238,7 +238,7 @@ namespace rengaas
                                     }
                                     else
                                     {
-                                        MessageBox.Show("PRODUCT NOT DELETED" + responseString);
+                                        MessageBox.Show("PRODUCT NOT DELETED\nMESSAGE:" + obj["data"].ToString());
                                     }
                                 }
                                 else
@@ -306,7 +306,7 @@ namespace rengaas
             {
                 editpro_but.IsEnabled = false;
                 int num1;
-                if ((this.pro_code.Text == "Product Code") || (this.pro_name.Text == "Product Name") || (this.pro_category.Text == "Category") ||  (this.pro_uom.Text == "Uom") || (this.pro_price.Text == "Piece price"))
+                if ((this.pro_code.Text == "Product Code") )
                 {
                     num1 = 1;
                 }
@@ -316,24 +316,13 @@ namespace rengaas
                 }
                 if (num1 != 0)
                 {
-                    MessageBox.Show("EMPTY FIELDS");
+                    MessageBox.Show("PLEASE ENTER THE PRODUCT CODE");
                 }
                 else
                 {
                     bool val = false;
                     
-                    if (this.box_price.Text == "Box Price")
-                    {
-                        this.box_price.Text = "0";
-                    }
-                    if (this.box_qty.Text == "Piece Per Box")
-                    {
-                        this.box_qty.Text = "0";
-                    }
-                    if (pro_price.Text == "Piece Price")
-                    {
-                        pro_price.Text = "0";
-                    }
+                   
                     if (this.head_box.Text == "EDIT PRODUCT")
                     {
                         string input = "Do you want to edit \n Product Code: " + this.opcode;
@@ -344,6 +333,30 @@ namespace rengaas
                             var d = sender1 as MyDialog;
                             if (!d.Canceled)
                             {
+                                if (box_price.Text == "Box Price")
+                                {
+                                    box_price.Text = "0";
+                                }
+                                if (box_qty.Text == "Piece Per Box")
+                                {
+                                    box_qty.Text = "0";
+                                }
+                                if (pro_price.Text == "Piece Price")
+                                {
+                                    pro_price.Text = "0";
+                                }
+                                if (pro_name.Text == "Product Name")
+                                {
+                                    pro_name.Text = "nil";
+                                }
+                                if (pro_category.Text == "Category")
+                                {
+                                    pro_category.Text = "nil";
+                                }
+                                if (pro_uom.Text == "Uom")
+                                {
+                                    pro_uom.Text = "nil";
+                                }
                                 try
                                 {
                                     string file1 = omurl;
@@ -376,7 +389,7 @@ namespace rengaas
                                         }
                                         else
                                         {
-                                            MessageBox.Show("PRODUCT NOT EDITED");
+                                            MessageBox.Show("PRODUCT NOT EDITED\nMESSAGE:" + obj["data"].ToString());
                                         }
                                     }
                                     else
@@ -654,7 +667,7 @@ namespace rengaas
             {
                 submit_but.IsEnabled = false;
                 int num1;
-                if ((this.pro_code.Text == "Product Code") || (this.pro_name.Text == "Product Name") || (this.pro_category.Text == "Category")  || (this.pro_uom.Text == "Uom") || (this.pro_price.Text == "Piece price"))
+                if ((this.pro_code.Text == "Product Code") )
                 {
                     num1 = 1;
                 }
@@ -664,25 +677,14 @@ namespace rengaas
                 }
                 if (num1 != 0)
                 {
-                    MessageBox.Show("EMPTY FIELDS");
+                    MessageBox.Show("PLEASE ENTER THE PRODUCT CODE");
                 }
                 else
                 {
                     bool val = false;
                     bool flag3 = connect.CheckForInternetConnection();
                   
-                    if (box_price.Text == "Box Price")
-                    {
-                        box_price.Text = "0";
-                    }
-                    if (box_qty.Text == "Piece Per Box")
-                    {
-                        box_qty.Text = "0";
-                    }
-                    if (pro_price.Text == "Piece Price")
-                    {
-                        pro_price.Text = "0";
-                    }
+                    
                     if (flag3 &&head_box.Text == "ADD PRODUCTS")
                     {
                         string input = "Do you want to add \n Product Name: " + pro_name.Text;
@@ -693,6 +695,31 @@ namespace rengaas
                             var d = sender1 as MyDialog;
                             if (!d.Canceled)
                             {
+                                if (box_price.Text == "Box Price")
+                                {
+                                    box_price.Text = "0";
+                                }
+                                if (box_qty.Text == "Piece Per Box")
+                                {
+                                    box_qty.Text = "0";
+                                }
+                                if (pro_price.Text == "Piece Price")
+                                {
+                                    pro_price.Text = "0";
+                                }
+                                if(pro_name.Text == "Product Name")
+                                {
+                                    pro_name.Text = "nil";
+                                }
+                                if(pro_category.Text == "Category")
+                                {
+                                    pro_category.Text = "nil";
+                                }
+                                if(pro_uom.Text == "Uom")
+                                {
+                                    pro_uom.Text = "nil";
+                                }
+                                
                                 try
                                 {
                                     var final_val = new Dictionary<string, Dictionary<string, string>>
@@ -724,7 +751,7 @@ namespace rengaas
                                         }
                                         else
                                         {
-                                            MessageBox.Show("PRODUCT NOT ADDED");
+                                            MessageBox.Show("PRODUCT NOT ADDED\nMESSAGE:" + obj["data"].ToString());
                                         }
                                     }
                                     else

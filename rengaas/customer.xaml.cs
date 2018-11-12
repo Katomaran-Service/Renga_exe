@@ -305,7 +305,7 @@ namespace rengaas
                                 }
                                 else
                                 {
-                                    MessageBox.Show("CUSTOMER NOT DELETED");
+                                    MessageBox.Show("CUSTOMER NOT DELETED\nMESSAGE:" + obj["data"].ToString());
                                 }
                                 customer_grid.ItemsSource = null;
                                 get_cust();
@@ -340,9 +340,9 @@ namespace rengaas
                 submit_but.IsEnabled = false;
                 try
                 {
-                    if ((cus_name.Text == "Customer name")  || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true )
+                    if ((cus_tphone.Text == "Phone number") )
                     {
-                        MessageBox.Show("EMPTY FIELDS");
+                        MessageBox.Show("PLEASE ENTER THE PHONE NUMBER");
                     }
                     else
                     {
@@ -356,6 +356,32 @@ namespace rengaas
                                 var d = sender1 as MyDialog;
                                 if (!d.Canceled)
                                 {
+                                    if(cus_name.Text== "Customer name")
+                                    {
+                                        cus_name.Text = "nil";
+                                    }
+                                    if (cus_shop.Text == "Shop name")
+                                    {
+                                        cus_shop.Text = "nil";
+                                    }
+                                    if (cus_reg.Text == "GST number")
+                                    {
+                                        cus_reg.Text = "nil";
+                                    }
+                                    if (cus_address.Text == "Full address")
+                                    {
+                                        cus_address.Text = "nil";
+                                    }
+                                    if (cus_email.Text == "E-mail")
+                                    {
+                                        cus_email.Text = "";
+                                        email_st.Text = "";
+                                        cus_email.BorderBrush = new SolidColorBrush(Colors.White);
+                                    }
+                                    if (cus_fax.Text == "Fax")
+                                    {
+                                        cus_fax.Text = "nil";
+                                    }
                                     try
                                     {
                                         var final_val = new Dictionary<string, Dictionary<string, string>>
@@ -384,8 +410,9 @@ namespace rengaas
                                             }
                                             else
                                             {
-                                                MessageBox.Show("CUSTOMER NOT ADDED");
-
+                                                MessageBox.Show("CUSTOMER NOT ADDED\nMESSAGE:"+ obj["data"].ToString());
+                                                
+                                                
                                             }
 
                                             customer_grid.ItemsSource = null;
@@ -426,19 +453,16 @@ namespace rengaas
                 editpro_but.IsEnabled = false;
                 try
                 {
-                    if ((cus_name.Text == "Customer name") || (cus_shop.Text == "Shop name") || (cus_reg.Text == "GST number") || (cus_address.Text == "Full address") || (cus_tphone.Text == "Phone number") || (cus_email.Text == "E-mail") || connect.valid_email(cus_email.Text) != true )
+                    if ((cus_tphone.Text == "Phone number"))
                     {
-                        MessageBox.Show("EMPTY FIELDS");
+                        MessageBox.Show("PLEASE ENTER THE PHONE NUMBER");
                     }
                     else
                     {
                         if (head_box.Text == "EDIT CUSTOMER")
                         {
                             
-                            if (cus_fax.Text == "Fax")
-                            {
-                                cus_fax.Text = "nil";
-                            }
+                            
                             string ms = "Do you want to EDIT \n customer ph no: " + ph;
                             var dialog = new MyDialog("EDIT CUSTOMER", ms);
                             dialog.Show();
@@ -447,6 +471,32 @@ namespace rengaas
                                 var d = sender1 as MyDialog;
                                 if (!d.Canceled)
                                 {
+                                    if (cus_name.Text == "Customer name")
+                                    {
+                                        cus_name.Text = "nil";
+                                    }
+                                    if (cus_shop.Text == "Shop name")
+                                    {
+                                        cus_shop.Text = "nil";
+                                    }
+                                    if (cus_reg.Text == "GST number")
+                                    {
+                                        cus_reg.Text = "nil";
+                                    }
+                                    if (cus_address.Text == "Full address")
+                                    {
+                                        cus_address.Text = "nil";
+                                    }
+                                    if (cus_email.Text == "E-mail")
+                                    {
+                                        cus_email.Text = "";
+                                        email_st.Text = "";
+                                        cus_email.BorderBrush = new SolidColorBrush(Colors.White);
+                                    }
+                                    if (cus_fax.Text == "Fax")
+                                    {
+                                        cus_fax.Text = "nil";
+                                    }
                                     var final_val = new Dictionary<string, Dictionary<string, string>>
                                 {
                                     {"customer",new Dictionary<string, string> {
@@ -474,7 +524,7 @@ namespace rengaas
                                         }
                                         else
                                         {
-                                            MessageBox.Show("CUSTOMER NOT EDITED" + responseString);
+                                            MessageBox.Show("CUSTOMER NOT EDITED\nMESSAGE:" + obj["data"].ToString());
 
                                         }
                                         customer_grid.ItemsSource = null;
@@ -651,7 +701,10 @@ namespace rengaas
             editpro_but.Visibility = Visibility.Hidden;
             cancel_but.Visibility = Visibility.Hidden;
             cn=cs=cg=ca=cp=cf=ce=0;
+            status = 0;
             status_progress.Value = 0;
+            email_st.Text = "";
+            cus_email.BorderBrush = new SolidColorBrush(Colors.White);
             status_block.Text = "";
             cus_name.Text = "Customer name";
             cus_name.Foreground = new SolidColorBrush(Colors.Gray);

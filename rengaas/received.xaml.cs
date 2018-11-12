@@ -38,6 +38,7 @@ namespace rengaas
             public string date { get; set; }
             public string time { get; set; }
             public string po { get; set; }
+            public string id { get; set; }
             public string customer_name { get; set; }
             public string sales_man { get; set; }
             public string color { get; set; }
@@ -114,21 +115,21 @@ namespace rengaas
             {
                 try
                 {
-                    print_doc.IsEnabled = true;
+                    
                     podatagrid.ItemsSource = null;
                     Items.Clear();
                     dynamic list = purchase_grid.SelectedItems[0];
-                    position = list.po;
+                    position = list.id;
 
                     string val = "true";
                     if (list.color == "Red")
                     {
                         var values1 = new Dictionary<string, string>
                      {
-                        { "product_code", list.po },
+                        { "product_code", list.id },
                     };
                         var content1 = new FormUrlEncodedContent(values1);
-                        var response1 = await connect.client.PutAsync(connect.order_get_url + "/" + list.po + "/admin_view", content1);
+                        var response1 = await connect.client.PutAsync(connect.order_get_url + "/" + list.id + "/admin_view", content1);
 
                         var responseString1 = await response1.Content.ReadAsStringAsync();
                         var obj = JObject.Parse(responseString1);
@@ -138,6 +139,7 @@ namespace rengaas
                    
                     if (string.Equals(val, "true", StringComparison.CurrentCultureIgnoreCase))
                     {
+                        print_doc.IsEnabled = true;
                         JObject jc = (JObject)list.customer_details;
                         address_val = jc["name"].ToString() + "\n" + jc["address"].ToString() + "\nPhone number:" + jc["phone"].ToString() + "\nFax:" + jc["fax"].ToString() + "\nEmail:" + jc["email"].ToString() + "\nReg no:" + jc["gst_no"].ToString();
                         purchase_address.Text = address_val;
@@ -157,12 +159,12 @@ namespace rengaas
                         podatagrid.ItemsSource = Items;
 
                         string[] pri = list.price.Split(',');
-                        int sum = 0;
+                        double sum = 0;
                         foreach (string i in pri)
                         {
                             if (i != "")
                             {
-                                sum += Convert.ToInt32(i);
+                                sum += Convert.ToDouble(i);
                             }
 
                         }
@@ -268,8 +270,7 @@ namespace rengaas
                                 JObject jc = (JObject)token.SelectToken("data[" + v.ToString() + "].customer");
                                 if (date == d1)
                                 {
-                                    Console.WriteLine(token.SelectToken("data[" + v.ToString() + "].id").ToString()+color1);
-                                    _items1.Add(new Item1 { po = token.SelectToken("data[" + v.ToString() + "].id").ToString(), product_code = pcode, product_name = pname, pquantity = piece_count, poquantity = porge_count, price = price1, date = date, time = time, color = color1, stat = st, customer_name = jc["name"].ToString(), sales_man = ju["first_name"].ToString(),customer_details=jc });
+                                    _items1.Add(new Item1 { po = token.SelectToken("data[" + v.ToString() + "].invoice_id").ToString(),id= token.SelectToken("data[" + v.ToString() + "].id").ToString(), product_code = pcode, product_name = pname, pquantity = piece_count, poquantity = porge_count, price = price1, date = date, time = time, color = color1, stat = st, customer_name = jc["name"].ToString(), sales_man = ju["first_name"].ToString(),customer_details=jc });
                                     i++;
                                 }
                             }

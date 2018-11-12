@@ -99,7 +99,7 @@ namespace rengaas
                                     JObject ju = (JObject)token.SelectToken("data[" + v.ToString() + "].user");
                                     JObject jc = (JObject)token.SelectToken("data[" + v.ToString() + "].customer");
                                     cust = jc["shop_name"].ToString();
-                                    _items.Add(new Item { date = date1+time, message = "order id:" + token.SelectToken("data[" + v.ToString() + "].id").ToString() + " shop name:" + cust +"\nsales man:"+ ju["first_name"].ToString() + "\ntime:" + time });
+                                    _items.Add(new Item { date = date1+time, message = "order id:" + token.SelectToken("data[" + v.ToString() + "].invoice_id").ToString() + " shop name:" + cust +"\nsales man:"+ ju["first_name"].ToString() + "\ntime:" + time });
                                     i++;
                                 }
                             }
@@ -114,7 +114,10 @@ namespace rengaas
                 }
                 catch (Exception m)
                 {
-                    MessageBox.Show(m.Message);
+                    dataGrid.ItemsSource = null;
+                    Items.Clear();
+                    _items.Add(new Item {date="", message = "notification error" });
+                    dataGrid.ItemsSource = Items;
                 }
             }
         }
@@ -404,7 +407,7 @@ namespace rengaas
             rec_image.Visibility = Visibility.Hidden;
             rec_image2.Visibility = Visibility.Visible;
             rec_label.Foreground = new SolidColorBrush(Color.FromRgb(30, 81, 251));
-            //main_frame.Content = new received();
+            main_frame.Content = new received();
         }
 
         private void notification_but_LostMouseCapture(object sender, MouseEventArgs e)
